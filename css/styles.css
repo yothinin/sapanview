@@ -1,0 +1,318 @@
+* {
+    box-sizing: border-box
+}
+body {
+    font-family: 'Prompt', sans-serif; margin:0;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  width: 100%; /* Full width of viewport */
+  height: auto; /* Full height of viewport */
+  margin: 0;
+}
+
+/* Logo and topnav container */
+.header {
+  display: flex;
+  justify-content: space-between; /* Distribute space between logo and nav */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Add some padding around */
+  background-color: rgba(51, 51, 51, 0.3); /* Semi-transparent background for readability */
+  position: absolute; /* Position it inside the slideshow */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Make sure it's on top of the image */
+}
+
+/* Logo styles */
+.logo {
+  font-family: 'Pattaya', sans-serif; /* ใช้ฟอนต์ Pattaya สำหรับโลโก้ */
+  font-size: 36px !important; /* ขนาดฟอนต์โลโก้ */
+  margin-left: 20px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ 
+/* Form search container */
+#form-search {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#form-search form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping to handle small screens */
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.3); /* Light background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+#form-search label {
+  font-size: 14px;
+  color: #333;
+  margin-right: 5px; /* Space between label and input */
+}
+
+#form-search input, #form-search button {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box;
+}
+
+#form-search input[type="date"], #form-search input[type="number"] {
+  width: auto; /* Allow input width to fit content */
+}
+
+#form-search button {
+  background-color: #555; /* Background color for button */
+  color: #f2f2f2;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+#form-search button:hover {
+  background-color: #777; /* Darker background on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+#form-search button:active {
+  transform: scale(0.95); /* Slightly shrink button on click */
+}
+
+/* Topnav styles */
+.topnav {
+  overflow: hidden;
+}
+
+/* Navbar links */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Caption text */
+.caption-text {
+  color: white;
+  font-size: 15px;
+  padding: 10px; /* Padding around the text */
+  position: absolute;
+  bottom: 58px; /* 8px original bottom + 50px adjustment */
+  left: 10px; /* Adjust as needed for left margin */
+  width: auto; /* Adjust width as needed */
+  text-align: left; /* Align text to the left */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Adds a shadow to make text stand out */
+}
+
+/* Link styles in caption-text */
+.caption-text a {
+  display: inline-block;
+  background-color: rgba(204, 204, 204, 0.3); /* Gray background with opacity */
+  color: white; /* Dark text color */
+  padding: 8px 16px; /* Padding around the text */
+  border-radius: 20px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  text-shadow: none; /* Remove text shadow from link */
+}
+
+.dots {
+    position: relative;
+    top: -30px;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next, .caption-text {font-size: 11px}
+}
+
+/* Responsive design */
+@media only screen and (max-width: 768px) {
+    .header {
+      flex-direction: column; /* Stack items vertically */
+    }
+  
+    .logo {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+  
+    #form-search {
+      padding: 5px;
+    }
+  
+    #form-search form {
+      flex-direction: column; /* Stack form elements vertically */
+      align-items: stretch;
+      gap: 5px;
+    }
+  
+    .topnav a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .topnav .icon {
+        display: none !important;
+      }
+
+    .caption-text {
+        display: none; /* Hide caption text */
+      }
+  
+    .prev, .next {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+  /* Sidenav container */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    /* left: 0; */
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .header {
+      padding: 5px;
+    }
+  
+    .logo {
+      font-size: 20px !important; /* Smaller font size for logo */
+    }
+  
+    #form-search form {
+      gap: 3px;
+    }
+  
+    .topnav a {
+      font-size: 15px;
+    }
+  }
+  
+  @media only screen and (max-width: 300px) {
+    .prev, .next, .caption-text {
+      font-size: 11px;
+    }
+  }
